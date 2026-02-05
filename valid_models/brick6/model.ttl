@@ -1,0 +1,104 @@
+@prefix bldg: <urn:ex/> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<urn:bldg/> a owl:Ontology .
+
+<urn:bldg/ahu1> a brick:Air_Handling_Unit; 
+    brick:hasPart <urn:bldg/hcoil1>, <urn:bldg/ccoil1>, <urn:bldg/supply_damper1>, <urn:bldg/return_fan1>, <urn:bldg/supply_fan1> ;
+    brick:hasPoint <urn:bldg/supply_air_temp_sensor1>, 
+                   <urn:bldg/mixed_air_temp_sensor1> ,
+                   <urn:bldg/outside_air_temp_sensor1>,
+                   <urn:bldg/supply_air_temp_setpoint1>, 
+                   <urn:bldg/return_air_temp_sensor1>, 
+                   <urn:bldg/hvac_mode_command1> .  
+
+<urn:bldg/return_fan1> a brick:Return_Fan ;    
+    brick:hasPoint <urn:bldg/return_fan_speed_command1> . 
+<urn:bldg/supply_fan1> a brick:Supply_Fan ;                           
+    brick:hasPoint <urn:bldg/supply_fan_speed_command1> .
+<urn:bldg/supply_fan_speed_command1> a brick:Speed_Command .
+<urn:bldg/return_fan_speed_command1> a brick:Speed_Command .
+
+<urn:bldg/hvac_mode_command1> a brick:HVAC_Mode_Command .
+
+<urn:bldg/supply_air_temp_sensor1> a brick:Supply_Air_Temperature_Sensor .
+<urn:bldg/supply_air_temp_setpoint1> a brick:Supply_Air_Temperature_Setpoint .
+<urn:bldg/mixed_air_temp_sensor1> a brick:Mixed_Air_Temperature_Sensor .
+<urn:bldg/return_air_temp_sensor1> a brick:Return_Air_Temperature_Sensor .
+<urn:bldg/outside_air_temp_sensor1> a brick:Outside_Air_Temperature_Sensor .
+<urn:bldg/hcoil1> a brick:Heating_Coil ;
+    brick:hasPoint <urn:bldg/hvalve_cmd1> .
+<urn:bldg/ccoil1> a brick:Cooling_Coil ;
+    brick:hasPoint <urn:bldg/cvalve_cmd1> .  
+<urn:bldg/cvalve_cmd1> a brick:Valve_Command .
+<urn:bldg/hvalve_cmd1> a brick:Valve_Command .
+<urn:bldg/supply_damper1> a brick:Supply_Damper;
+    brick:hasPoint <urn:bldg/supply_damper_position_cmd1> .
+<urn:bldg/supply_damper_position_cmd1> a brick:Damper_Position_Command .
+
+<urn:bldg/ahu2> a brick:Air_Handling_Unit; 
+    brick:hasPart <urn:bldg/hcoil2>, <urn:bldg/ccoil2>, <urn:bldg/supply_damper2>, <urn:bldg/return_fan2>, <urn:bldg/supply_fan2> ;
+    brick:hasPoint <urn:bldg/supply_air_temp_sensor2>, 
+                   <urn:bldg/mixed_air_temp_sensor2> ,
+                   <urn:bldg/outside_air_temp_sensor2>,
+                   <urn:bldg/supply_air_temp_setpoint2>, 
+                   <urn:bldg/return_air_temp_sensor2>, 
+                   <urn:bldg/hvac_mode_command2> .  
+
+<urn:bldg/return_fan2> a brick:Return_Fan ;    
+    brick:hasPoint <urn:bldg/return_fan_speed_command2> . 
+<urn:bldg/supply_fan2> a brick:Supply_Fan ;                           
+    brick:hasPoint <urn:bldg/supply_fan_speed_command2> .
+<urn:bldg/supply_fan_speed_command2> a brick:Speed_Command .
+<urn:bldg/return_fan_speed_command2> a brick:Speed_Command .
+
+<urn:bldg/hvac_mode_command2> a brick:HVAC_Mode_Command .
+
+<urn:bldg/supply_air_temp_sensor2> a brick:Supply_Air_Temperature_Sensor .
+<urn:bldg/supply_air_temp_setpoint2> a brick:Supply_Air_Temperature_Setpoint .
+<urn:bldg/mixed_air_temp_sensor2> a brick:Mixed_Air_Temperature_Sensor .
+<urn:bldg/return_air_temp_sensor2> a brick:Return_Air_Temperature_Sensor .
+<urn:bldg/outside_air_temp_sensor2> a brick:Outside_Air_Temperature_Sensor .
+<urn:bldg/hcoil2> a brick:Heating_Coil ;
+    brick:hasPoint <urn:bldg/hvalve_cmd2> .
+<urn:bldg/ccoil2> a brick:Cooling_Coil ;
+    brick:hasPoint <urn:bldg/cvalve_cmd2> .  
+<urn:bldg/cvalve_cmd2> a brick:Valve_Command .
+<urn:bldg/hvalve_cmd2> a brick:Valve_Command .
+<urn:bldg/supply_damper2> a brick:Supply_Damper;
+    brick:hasPoint <urn:bldg/supply_damper_position_cmd2> .
+<urn:bldg/supply_damper_position_cmd2> a brick:Damper_Position_Command .
+
+<urn:bldg/ahu3> a brick:Air_Handling_Unit; 
+    brick:hasPart <urn:bldg/hcoil3>, <urn:bldg/ccoil3>, <urn:bldg/supply_damper3>, <urn:bldg/return_fan3>, <urn:bldg/supply_fan3> ;
+    brick:hasPoint <urn:bldg/supply_air_temp_sensor3>, 
+                   <urn:bldg/mixed_air_temp_sensor3> ,
+                   <urn:bldg/outside_air_temp_sensor3>,
+                   <urn:bldg/supply_air_temp_setpoint3>, 
+                   <urn:bldg/return_air_temp_sensor3>, 
+                   <urn:bldg/hvac_mode_command3> .  
+
+<urn:bldg/return_fan3> a brick:Return_Fan ;    
+    brick:hasPoint <urn:bldg/return_fan_speed_command3> . 
+<urn:bldg/supply_fan3> a brick:Supply_Fan ;                           
+    brick:hasPoint <urn:bldg/supply_fan_speed_command3> .
+<urn:bldg/supply_fan_speed_command3> a brick:Speed_Command .
+<urn:bldg/return_fan_speed_command3> a brick:Speed_Command .
+
+<urn:bldg/hvac_mode_command3> a brick:HVAC_Mode_Command .
+
+<urn:bldg/supply_air_temp_sensor3> a brick:Supply_Air_Temperature_Sensor .
+<urn:bldg/supply_air_temp_setpoint3> a brick:Supply_Air_Temperature_Setpoint .
+<urn:bldg/mixed_air_temp_sensor3> a brick:Mixed_Air_Temperature_Sensor .
+<urn:bldg/return_air_temp_sensor3> a brick:Return_Air_Temperature_Sensor .
+<urn:bldg/outside_air_temp_sensor3> a brick:Outside_Air_Temperature_Sensor .
+<urn:bldg/hcoil3> a brick:Heating_Coil ;
+    brick:hasPoint <urn:bldg/hvalve_cmd3> .
+<urn:bldg/ccoil3> a brick:Cooling_Coil ;
+    brick:hasPoint <urn:bldg/cvalve_cmd3> .  
+<urn:bldg/cvalve_cmd3> a brick:Valve_Command .
+<urn:bldg/hvalve_cmd3> a brick:Valve_Command .
+<urn:bldg/supply_damper3> a brick:Supply_Damper;
+    brick:hasPoint <urn:bldg/supply_damper_position_cmd3> .
+<urn:bldg/supply_damper_position_cmd3> a brick:Damper_Position_Command .

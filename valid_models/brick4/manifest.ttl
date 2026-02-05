@@ -1,0 +1,66 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <urn:ashrae/g36/4.4/dual-duct-terminal-unit-with-inlet-sensors/> .
+
+: a owl:Ontology ;
+    owl:imports <https://brickschema.org/schema/1.3/Brick> .
+
+:terminal-unit a sh:NodeShape ;
+    sh:targetClass brick:Terminal_Unit ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedValueShape [ sh:node :hot-deck ] ;
+        sh:qualifiedMinCount 1 ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedValueShape [ sh:node :cold-deck ] ;
+        sh:qualifiedMinCount 1 ;
+    ] ; 
+.
+
+:hot-deck a  sh:NodeShape;
+    sh:class brick:Hot_Deck ;
+    sh:node :heating_damper ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Flow_Sensor ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+    ] ;
+.
+
+:cold-deck a sh:NodeShape ;
+    sh:class brick:Cold_Deck ;
+    sh:node :cooling_damper ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Flow_Sensor ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+    ] ;
+.
+
+
+:cooling_damper a sh:NodeShape ;
+    sh:class brick:Damper ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedValueShape [ sh:class brick:Damper_Position_Command ] ;
+        sh:qualifiedMinCount 1 ;
+         sh:qualifiedMaxCount 1 ;
+    ] ;
+.
+
+:heating_damper a sh:NodeShape ;
+    sh:class brick:Damper ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedValueShape [ sh:class brick:Damper_Position_Command ] ;
+        sh:qualifiedMinCount 1 ;
+         sh:qualifiedMaxCount 1 ;
+    ] ;
+.

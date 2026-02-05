@@ -1,0 +1,28 @@
+@prefix bldg: <urn:ex/> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:bldg/> a owl:Ontology .
+
+<urn:bldg/vav1> a brick:VAV; 
+    brick:hasPart <urn:bldg/damper1>;
+    brick:hasPoint <urn:bldg/zone_air_temp_sensor1>, <urn:bldg/discharge_air_flow_sensor1> .
+
+<urn:bldg/damper1> a brick:Damper ; 
+    brick:hasPoint <urn:bldg/damper_position_command1>.
+
+<urn:bldg/discharge_air_flow_sensor1> a  brick:Discharge_Air_Flow_Sensor .
+
+<urn:bldg/zone_air_temp_sensor1> a brick:Zone_Air_Temperature_Sensor .
+
+<urn:bldg/damper_position_command1> a brick:Damper_Position_Command .
+
+<urn:bldg/vav2> a brick:VAV; 
+    brick:hasPoint <urn:bldg/zone_air_temp_sensor2>, <urn:bldg/discharge_air_flow_sensor2>, <urn:bldg/damper_position_command2>.
+
+<urn:bldg/discharge_air_flow_sensor2> a  brick:Discharge_Air_Flow_Sensor .
+
+<urn:bldg/zone_air_temp_sensor2> a brick:Zone_Air_Temperature_Sensor .
+
+<urn:bldg/damper_position_command2> a brick:Damper_Position_Command .

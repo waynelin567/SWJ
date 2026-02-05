@@ -1,0 +1,33 @@
+@prefix bldg: <urn:ex/> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<urn:bldg/> a owl:Ontology .
+
+<urn:bldg/ahu1> a brick:AHU; 
+    brick:hasPart <urn:bldg/ccoil1>, <urn:bldg/hcoil1> .
+<urn:bldg/ccoil1> a brick:Cooling_Coil;
+    brick:hasPoint <urn:bldg/cv_cmd1>.
+<urn:bldg/hcoil1> a brick:Heating_Coil;
+    brick:hasPoint <urn:bldg/hv_cmd1>.
+<urn:bldg/cv_cmd1> a brick:Valve_Command.
+<urn:bldg/hv_cmd1> a brick:Valve_Command.
+
+
+<urn:bldg/ahu2> a brick:AHU; 
+    brick:hasPart <urn:bldg/ccoil2>, <urn:bldg/hcoil2> .
+<urn:bldg/ccoil2> a brick:Cooling_Coil;
+    brick:hasPoint <urn:bldg/cv_cmd2>.
+<urn:bldg/hcoil2> a brick:Heating_Coil;
+    brick:hasPoint <urn:bldg/hv_cmd2>.
+<urn:bldg/cv_cmd2> a brick:Valve_Command.
+<urn:bldg/hv_cmd2> a brick:Valve_Command.
+
+<urn:bldg/ahu3> a brick:AHU; 
+    brick:hasPart <urn:bldg/ccoil3>, <urn:bldg/hcoil3> .
+<urn:bldg/ccoil3> a brick:Cooling_Coil;
+    brick:hasPoint <urn:bldg/cv_cmd3>.
+<urn:bldg/hcoil3> a brick:Heating_Coil;
+    brick:hasPoint <urn:bldg/hv_cmd3>.
+<urn:bldg/cv_cmd3> a brick:Valve_Command.
+<urn:bldg/hv_cmd3> a brick:Valve_Command.

@@ -1,0 +1,25 @@
+@prefix bldg: <urn:ex/> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<urn:bldg/> a owl:Ontology .
+
+<urn:bldg/ahu> a brick:Air_Handling_Unit; 
+    brick:hasPart <urn:bldg/damper_o>, <urn:bldg/supply_fan>, <urn:bldg/preheat_valve>;
+    brick:hasPoint <urn:bldg/air_flow_sensor>, <urn:bldg/oa_flow_stpt>, <urn:bldg/stat_pressure_sensor>, <urn:bldg/stat_pressure_stpt>, <urn:bldg/supply_air_tmp_sensor>, <urn:bldg/supply_air_tmp_stpt>.
+
+<urn:bldg/damper_o> a brick:Outside_Damper; 
+    brick:hasPoint <urn:bldg/damper_pos_sensor>, <urn:bldg/damper_pos_stpt> .
+<urn:bldg/air_flow_sensor> a brick:Air_Flow_Sensor.
+<urn:bldg/oa_flow_stpt> a brick:Outside_Air_Flow_Setpoint.
+
+<urn:bldg/damper_pos_sensor> a brick:Damper_Position_Sensor .
+<urn:bldg/damper_pos_stpt> a brick:Damper_Position_Setpoint .
+
+<urn:bldg/preheat_valve> a brick:Preheat_Valve .
+<urn:bldg/supply_air_tmp_sensor> a brick:Supply_Air_Temperature_Sensor .
+<urn:bldg/supply_air_tmp_stpt> a brick:Supply_Air_Temperature_Setpoint .
+
+<urn:bldg/supply_fan> a brick:Supply_Fan.
+<urn:bldg/stat_pressure_sensor> a brick:Static_Pressure_Sensor .
+<urn:bldg/stat_pressure_stpt> a brick:Static_Pressure_Setpoint .

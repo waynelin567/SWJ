@@ -1,0 +1,30 @@
+@prefix bldg: <urn:ex/> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:bldg/> a owl:Ontology .
+
+<urn:bldg/fptu> a brick:Terminal_Unit ;
+    brick:feeds <urn:bldg/zone1> ;
+    brick:hasPart <urn:bldg/hot_deck>, <urn:bldg/cold_deck>.
+
+<urn:bldg/cooling_damper_position_cmd> a brick:Damper_Position_Command .
+
+<urn:bldg/heating_damper_position_cmd> a brick:Damper_Position_Command .
+
+<urn:bldg/hot_deck> a brick:Hot_Deck, brick:Damper ;
+    brick:hasPoint <urn:bldg/heating_damper_position_cmd>;
+    brick:hasPoint <urn:bldg/hot_supply_air_flow>.
+
+<urn:bldg/cold_deck> a brick:Cold_Deck, brick:Damper ;
+    brick:hasPoint <urn:bldg/cooling_damper_position_cmd> ;
+    brick:hasPoint <urn:bldg/cold_supply_air_flow> .
+
+<urn:bldg/hot_supply_air_flow> a brick:Supply_Air_Flow_Sensor .
+<urn:bldg/cold_supply_air_flow> a brick:Supply_Air_Flow_Sensor .
+
+<urn:bldg/zone1> a brick:HVAC_Zone ;
+    brick:hasPoint <urn:bldg/zone_temp> .
+
+<urn:bldg/zone_temp> a brick:Zone_Air_Temperature_Sensor . 

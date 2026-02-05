@@ -1,0 +1,46 @@
+@prefix bldg: <urn:ex/> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:bldg/> a owl:Ontology .
+
+<urn:bldg/vav756> a brick:RVAV ;
+    brick:hasPart <urn:bldg/damper156> ;
+    brick:hasPoint <urn:bldg/supply_air_flow444>, 
+                   <urn:bldg/supply_air_temp_sensor47>, 
+                   <urn:bldg/damper_position_command1>,
+                   <urn:bldg/heating_cmd2> ;
+    brick:feeds <urn:bldg/zone1>, <urn:bldg/zone1_rm1>. 
+
+<urn:bldg/supply_air_temp_sensor47> a brick:Supply_Air_Temperature_Sensor .
+<urn:bldg/damper156> a brick:Damper .
+<urn:bldg/supply_air_flow444> a brick:Discharge_Air_Flow_Sensor .
+<urn:bldg/zone1> a brick:HVAC_Zone;
+    brick:hasPoint <urn:bldg/supply_air_flow444>, <urn:bldg/zone1_temp_sensor1> .
+<urn:bldg/zone1_rm1> a brick:Room .
+
+<urn:bldg/zone1_temp_sensor1> a brick:Zone_Air_Temperature_Sensor .    
+
+<urn:bldg/damper_position_command1> a brick:Damper_Position_Command .
+<urn:bldg/heating_cmd2> a brick:Heating_Command .
+
+<urn:bldg/vav356> a brick:RVAV ;
+    brick:hasPart <urn:bldg/damper355> ;
+    brick:hasPoint <urn:bldg/supply_air_flow414>, 
+                   <urn:bldg/supply_air_temp_sensor57>, 
+                   <urn:bldg/damper_position_command3>,
+                   <urn:bldg/heating_cmd0> ;
+    brick:feeds <urn:bldg/zone2>, <urn:bldg/zone2_rm1>. 
+
+<urn:bldg/supply_air_temp_sensor57> a brick:Supply_Air_Temperature_Sensor .
+<urn:bldg/damper355> a brick:Damper .
+<urn:bldg/supply_air_flow414> a brick:Discharge_Air_Flow_Sensor .
+<urn:bldg/zone2> a brick:HVAC_Zone;
+    brick:hasPoint <urn:bldg/supply_air_flow414>, <urn:bldg/zone2_temp_sensor1> .
+<urn:bldg/zone2_rm1> a brick:Room .
+
+<urn:bldg/zone2_temp_sensor1> a brick:Zone_Air_Temperature_Sensor .    
+
+<urn:bldg/damper_position_command3> a brick:Damper_Position_Command .
+<urn:bldg/heating_cmd0> a brick:Heating_Command .

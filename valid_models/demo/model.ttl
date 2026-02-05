@@ -1,0 +1,27 @@
+@prefix bldg: <urn:ex/> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:bldg/> a owl:Ontology .
+
+<urn:bldg/ahu1> a brick:AHU ;
+    brick:hasPart <urn:bldg/sup_fan1>, <urn:bldg/ret_fan3> .
+
+<urn:bldg/sup_fan1> a brick:Supply_Fan ;
+    brick:hasPoint <urn:bldg/sa_tmp1>, <urn:bldg/fan_stat1>, <urn:bldg/freq_cmd1>.
+
+
+<urn:bldg/ret_fan3> a brick:Return_Fan;
+    brick:hasPoint <urn:bldg/ra_tmp3>, <urn:bldg/fan_stat3>, <urn:bldg/freq_cmd3> .
+
+
+<urn:bldg/freq_cmd3> a brick:Frequency_Command .
+<urn:bldg/freq_cmd1> a brick:Frequency_Command .
+
+<urn:bldg/fan_stat1>  a brick:Fan_Status.
+<urn:bldg/fan_stat3>  a brick:Fan_Status.
+
+
+<urn:bldg/sa_temp1> a brick:Supply_Air_Temperature_Sensor .
+<urn:bldg/ra_temp3> a brick:Return_Air_Temperature_Sensor .

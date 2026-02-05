@@ -1,0 +1,104 @@
+[tool.poetry]
+name = "BuildingMOTIF"
+version = "0.2.0-beta"
+description = "Building Metadata OnTology Interoperability Framework"
+license = "LICENSE"
+authors = [
+  "Hannah Eslinger <Hannah.Eslinger@nrel.gov>",
+  "Gabriel Fierro <gtfierro@mines.edu>",
+  "Selam Haile <Selam.Haile@nrel.gov>",
+  "Avijit Saha <Avijit.Saha@nrel.gov>",
+  "Tobias Shapinsky <Tobias.Shapinsky@nrel.gov>",
+  "Matthew Steen <Matthew.Steen@nrel.gov>"
+]
+readme = "docs/README.md"
+repository = "https://github.com/NREL/BuildingMOTIF"
+documentation = "https://nrel.github.io/BuildingMOTIF"
+
+[tool.poetry.scripts]
+buildingmotif = 'buildingmotif.bin.cli:app'
+
+[tool.poetry.dependencies]
+python = ">=3.10.14, <3.12"
+rdflib = ">=7.0"
+SQLAlchemy = {extras = ["mypy"], version = "^1.4.44"}
+pyaml = "^21.10.1"
+networkx = "^2.7.1"
+types-PyYAML = "^6.0.4"
+nbmake = "^1.3.0"
+rdflib-sqlalchemy = "^0.5.3"
+pyshacl = { path = "../pySHACL" } 
+alembic = "^1.8.0"
+Flask = "^2.1.2"
+Flask-API = "^3.0.post1"
+rfc3987 = "^1.3.8"
+setuptools = "^65.6.3"
+psycopg2 = {version="^2.9.5", optional=true}
+pygit2 = "~1.11.1"
+jsonschema = "^4.21.1"
+brick-tq-shacl = {optional = true, version="0.3.2a4"}
+werkzeug="^2.3.7"
+types-jsonschema = "^4.21.0.20240311"
+pyduktape2 = "^0.4.6"
+pandas = "^2.2.2"
+numpy = "^1.24.4"
+openai = "^1.35.14"
+google-generativeai = "*"
+tiktoken = "^0.7.0"
+anthropic = "^0.40.0"
+transformers = "^4.41.2"
+matplotlib = "^3.9.0"
+seaborn = "^0.13.2"
+scipy = "^1.13.1"
+statsmodels = "^0.14.4"
+pyontoenv = "0.1.9"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.3.0"
+isort = "^5.10.1"
+pre-commit = "^2.17.0"
+pytest-cov = "^3.0.0"
+mypy = "v1.9.0"
+sqlalchemy2-stubs = "^0.0.2a38"
+psycopg2-binary = "^2.9.5"
+jupytext = "^1.13.8"
+jupyter = "^1.0.0"
+ipykernel = "^6.13.0"
+rise = "^5.7.1"
+jupyter-book = "^0.15.1"
+flake8 = "^5.0.0"
+BAC0 = "^22.9.21"
+netifaces = "^0.11.0"
+pytz = "^2022.7.1"
+openpyxl = "^3.0.10"
+pytest = "^8.0.2"
+
+[tool.poetry.extras]
+all = ["BAC0", "openpyxl", "netifaces", "pytz", "psycopg2"]
+postgres = ["psycopg2"]
+topquadrant = ["brick-tq-shacl"]
+# dependencies for ingresses (e.g. BAC0, openpyxl) should be included in dev dependencies
+bacnet-ingress = ["BAC0", "netifaces", "pytz"]
+xlsx-ingress = ["openpyxl"]
+all-ingresses = ["BAC0", "openpyxl", "netifaces", "pytz"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+extend-exclude = "docs/conf.py"
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+files = ["buildingmotif/*.py", "tests/*.py", "migrations/*.py"]
+plugins = "sqlalchemy.ext.mypy.plugin"
+follow_imports = "skip"
+
+[tool.pytest.ini_options]
+log_cli_level = "WARNING"
+markers = [
+    "integration: mark a test as an integration test"
+]

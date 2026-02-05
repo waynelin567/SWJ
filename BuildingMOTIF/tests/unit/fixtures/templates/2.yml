@@ -1,0 +1,16 @@
+vav:
+  body: >
+    @prefix bmparam: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    bmparam:name a brick:VAV ;
+      brick:feeds bmparam:zone ;
+      brick:hasPoint bmparam:sen .
+  dependencies:
+   - template: temp-sensor
+     args: {"name": "sen"}
+
+temp-sensor:
+  body: >
+    @prefix bmparam: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    bmparam:name a brick:Temperature_Sensor .

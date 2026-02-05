@@ -1,0 +1,302 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.Department0.University0.edu/Course13> a ub:Course ;
+    ub:name "Course13"^^xsd:string .
+
+<http://www.Department0.University0.edu/FullProfessor9> a ub:FullProfessor ;
+    ub:doctoralDegreeFrom <http://www.University730.edu> ;
+    ub:emailAddress "FullProfessor9@Department0.University0.edu"^^xsd:string ;
+    ub:mastersDegreeFrom <http://www.University963.edu> ;
+    ub:name "FullProfessor9"^^xsd:string ;
+    ub:researchInterest "Research5" ;
+    ub:teacherOf <http://www.Department0.University0.edu/Course14>,
+        <http://www.Department0.University0.edu/GraduateCourse15>,
+        <http://www.Department0.University0.edu/GraduateCourse16> ;
+    ub:telephone "xxx-xxx-xxxx"^^xsd:string ;
+    ub:undergraduateDegreeFrom <http://www.University688.edu> ;
+    ub:worksFor <http://www.Department0.University0.edu> .
+
+<http://www.Department0.University0.edu/GraduateCourse33> a ub:GraduateCourse ;
+    ub:name "GraduateCourse33"^^xsd:string .
+
+<http://www.Department0.University0.edu/GraduateCourse42> a ub:GraduateCourse ;
+    ub:name "GraduateCourse42"^^xsd:string .
+
+<http://www.Department0.University0.edu/GraduateStudent0> a ub:GraduateStudent,
+        ub:ResearchAssistant ;
+    ub:advisor <http://www.Department0.University0.edu/AssistantProfessor3> ;
+    ub:emailAddress "GraduateStudent0@Department0.University0.edu"^^xsd:string ;
+    ub:memberOf <http://www.Department0.University0.edu> ;
+    ub:name "GraduateStudent0"^^xsd:string ;
+    ub:takesCourse <http://www.Department0.University0.edu/GraduateCourse16>,
+        <http://www.Department0.University0.edu/GraduateCourse50>,
+        <http://www.Department0.University0.edu/GraduateCourse64> ;
+    ub:telephone "xxx-xxx-xxxx"^^xsd:string ;
+    ub:undergraduateDegreeFrom <http://www.University358.edu> .
+
+<http://www.Department0.University0.edu/GraduateStudent91> a ub:GraduateStudent,
+        ub:ResearchAssistant ;
+    ub:advisor <http://www.Department0.University0.edu/FullProfessor6> ;
+    ub:emailAddress "GraduateStudent91@Department0.University0.edu"^^xsd:string ;
+    ub:memberOf <http://www.Department0.University0.edu> ;
+    ub:name "GraduateStudent91"^^xsd:string ;
+    ub:takesCourse <http://www.Department0.University0.edu/GraduateCourse3>,
+        <http://www.Department0.University0.edu/GraduateCourse49> ;
+    ub:telephone "xxx-xxx-xxxx"^^xsd:string ;
+    ub:undergraduateDegreeFrom <http://www.University708.edu> .
+
+<http://www.Department1.University0.edu/Course0> a ub:Course ;
+    ub:name "Course0"^^xsd:string .
+
+<http://www.Department1.University0.edu/FullProfessor0> a ub:FullProfessor ;
+    ub:doctoralDegreeFrom <http://www.University963.edu> ;
+    ub:emailAddress "FullProfessor0@Department1.University0.edu"^^xsd:string ;
+    ub:mastersDegreeFrom <http://www.University509.edu> ;
+    ub:name "FullProfessor0"^^xsd:string ;
+    ub:researchInterest "Research19" ;
+    ub:teacherOf <http://www.Department1.University0.edu/Course1>,
+        <http://www.Department1.University0.edu/GraduateCourse0>,
+        <http://www.Department1.University0.edu/GraduateCourse1> ;
+    ub:telephone "xxx-xxx-xxxx"^^xsd:string ;
+    ub:undergraduateDegreeFrom <http://www.University512.edu> ;
+    ub:worksFor <http://www.Department1.University0.edu> .
+
+<http://www.Department2.University0.edu/FullProfessor2> a ub:FullProfessor ;
+    ub:doctoralDegreeFrom <http://www.University415.edu> ;
+    ub:emailAddress "FullProfessor2@Department2.University0.edu"^^xsd:string ;
+    ub:mastersDegreeFrom <http://www.University434.edu> ;
+    ub:name "FullProfessor2"^^xsd:string ;
+    ub:researchInterest "Research11" ;
+    ub:teacherOf <http://www.Department2.University0.edu/Course3>,
+        <http://www.Department2.University0.edu/Course4>,
+        <http://www.Department2.University0.edu/GraduateCourse3> ;
+    ub:telephone "xxx-xxx-xxxx"^^xsd:string ;
+    ub:undergraduateDegreeFrom <http://www.University605.edu> ;
+    ub:worksFor <http://www.Department2.University0.edu> .
+
+<http://www.Department2.University0.edu/GraduateStudent7> a ub:GraduateStudent,
+        ub:ResearchAssistant ;
+    ub:advisor <http://www.Department2.University0.edu/FullProfessor6> ;
+    ub:emailAddress "GraduateStudent7@Department2.University0.edu"^^xsd:string ;
+    ub:memberOf <http://www.Department2.University0.edu> ;
+    ub:name "GraduateStudent7"^^xsd:string ;
+    ub:takesCourse <http://www.Department2.University0.edu/GraduateCourse20> ;
+    ub:telephone "xxx-xxx-xxxx"^^xsd:string ;
+    ub:undergraduateDegreeFrom <http://www.University377.edu> .
+
+<http://www.Department5.University0.edu/FullProfessor3> a ub:FullProfessor ;
+    ub:doctoralDegreeFrom <http://www.University33.edu> ;
+    ub:emailAddress "FullProfessor3@Department5.University0.edu"^^xsd:string ;
+    ub:mastersDegreeFrom <http://www.University828.edu> ;
+    ub:name "FullProfessor3"^^xsd:string ;
+    ub:researchInterest "Research22" ;
+    ub:teacherOf <http://www.Department5.University0.edu/Course5>,
+        <http://www.Department5.University0.edu/Course6>,
+        <http://www.Department5.University0.edu/GraduateCourse4> ;
+    ub:telephone "xxx-xxx-xxxx"^^xsd:string ;
+    ub:undergraduateDegreeFrom <http://www.University958.edu> ;
+    ub:worksFor <http://www.Department5.University0.edu> .
+
+<http://www.Department9.University0.edu/FullProfessor1> a ub:FullProfessor ;
+    ub:doctoralDegreeFrom <http://www.University927.edu> ;
+    ub:emailAddress "FullProfessor1@Department9.University0.edu"^^xsd:string ;
+    ub:mastersDegreeFrom <http://www.University995.edu> ;
+    ub:name "FullProfessor1"^^xsd:string ;
+    ub:researchInterest "Research1" ;
+    ub:teacherOf <http://www.Department9.University0.edu/Course1>,
+        <http://www.Department9.University0.edu/Course2>,
+        <http://www.Department9.University0.edu/GraduateCourse1> ;
+    ub:telephone "xxx-xxx-xxxx"^^xsd:string ;
+    ub:undergraduateDegreeFrom <http://www.University392.edu> ;
+    ub:worksFor <http://www.Department9.University0.edu> .
+
+<http://www.Department9.University0.edu/GraduateStudent28> a ub:GraduateStudent,
+        ub:TeachingAssistant ;
+    ub:advisor <http://www.Department9.University0.edu/AssistantProfessor10> ;
+    ub:emailAddress "GraduateStudent28@Department9.University0.edu"^^xsd:string ;
+    ub:memberOf <http://www.Department9.University0.edu> ;
+    ub:name "GraduateStudent28"^^xsd:string ;
+    ub:takesCourse <http://www.Department9.University0.edu/GraduateCourse1>,
+        <http://www.Department9.University0.edu/GraduateCourse21>,
+        <http://www.Department9.University0.edu/GraduateCourse38> ;
+    ub:teachingAssistantOf <http://www.Department9.University0.edu/Course27> ;
+    ub:telephone "xxx-xxx-xxxx"^^xsd:string ;
+    ub:undergraduateDegreeFrom <http://www.University68.edu> .
+
+<http://www.Department9.University0.edu/GraduateStudent5> a ub:GraduateStudent ;
+    ub:advisor <http://www.Department9.University0.edu/AssistantProfessor8> ;
+    ub:emailAddress "GraduateStudent5@Department9.University0.edu"^^xsd:string ;
+    ub:memberOf <http://www.Department9.University0.edu> ;
+    ub:name "GraduateStudent5"^^xsd:string ;
+    ub:takesCourse <http://www.Department9.University0.edu/GraduateCourse12> ;
+    ub:telephone "xxx-xxx-xxxx"^^xsd:string ;
+    ub:undergraduateDegreeFrom <http://www.University596.edu> .
+
+<http://www.University1.edu> a ub:University ;
+    ub:name "University1"^^xsd:string .
+
+<http://www.University2.edu> a ub:University ;
+    ub:name "University2"^^xsd:string .
+
+<http://www.University3.edu> a ub:University ;
+    ub:name "University3"^^xsd:string .
+
+<http://www.University4.edu> a ub:University ;
+    ub:name "University4"^^xsd:string .
+
+<urn:bldg/> a owl:Ontology .
+
+<http://www.Department0.University0.edu/Course14> a ub:Course ;
+    ub:name "Course14"^^xsd:string .
+
+<http://www.Department0.University0.edu/GraduateCourse15> a ub:GraduateCourse ;
+    ub:name "GraduateCourse15"^^xsd:string .
+
+<http://www.Department0.University0.edu/GraduateCourse3> a ub:GraduateCourse ;
+    ub:name "GraduateCourse3"^^xsd:string .
+
+<http://www.Department0.University0.edu/GraduateCourse49> a ub:GraduateCourse ;
+    ub:name "GraduateCourse49"^^xsd:string .
+
+<http://www.Department0.University0.edu/GraduateCourse50> a ub:GraduateCourse ;
+    ub:name "GraduateCourse50"^^xsd:string .
+
+<http://www.Department0.University0.edu/GraduateCourse64> a ub:GraduateCourse ;
+    ub:name "GraduateCourse64"^^xsd:string .
+
+<http://www.Department1.University0.edu> a ub:Department ;
+    ub:name "Department1"^^xsd:string ;
+    ub:subOrganizationOf <http://www.University0.edu> .
+
+<http://www.Department1.University0.edu/Course1> a ub:Course ;
+    ub:name "Course1"^^xsd:string .
+
+<http://www.Department1.University0.edu/GraduateCourse0> a ub:GraduateCourse ;
+    ub:name "GraduateCourse0"^^xsd:string .
+
+<http://www.Department1.University0.edu/GraduateCourse1> a ub:GraduateCourse ;
+    ub:name "GraduateCourse1"^^xsd:string .
+
+<http://www.Department2.University0.edu/Course3> a ub:Course ;
+    ub:name "Course3"^^xsd:string .
+
+<http://www.Department2.University0.edu/Course4> a ub:Course ;
+    ub:name "Course4"^^xsd:string .
+
+<http://www.Department2.University0.edu/GraduateCourse20> a ub:GraduateCourse ;
+    ub:name "GraduateCourse20"^^xsd:string .
+
+<http://www.Department2.University0.edu/GraduateCourse3> a ub:GraduateCourse ;
+    ub:name "GraduateCourse3"^^xsd:string .
+
+<http://www.Department5.University0.edu> a ub:Department ;
+    ub:name "Department5"^^xsd:string ;
+    ub:subOrganizationOf <http://www.University0.edu> .
+
+<http://www.Department5.University0.edu/Course5> a ub:Course ;
+    ub:name "Course5"^^xsd:string .
+
+<http://www.Department5.University0.edu/Course6> a ub:Course ;
+    ub:name "Course6"^^xsd:string .
+
+<http://www.Department5.University0.edu/GraduateCourse4> a ub:GraduateCourse ;
+    ub:name "GraduateCourse4"^^xsd:string .
+
+<http://www.Department9.University0.edu/Course1> a ub:Course ;
+    ub:name "Course1"^^xsd:string .
+
+<http://www.Department9.University0.edu/Course2> a ub:Course ;
+    ub:name "Course2"^^xsd:string .
+
+<http://www.Department9.University0.edu/Course27> a ub:Course ;
+    ub:name "Course27"^^xsd:string .
+
+<http://www.Department9.University0.edu/GraduateCourse12> a ub:GraduateCourse ;
+    ub:name "GraduateCourse12"^^xsd:string .
+
+<http://www.Department9.University0.edu/GraduateCourse21> a ub:GraduateCourse ;
+    ub:name "GraduateCourse21"^^xsd:string .
+
+<http://www.Department9.University0.edu/GraduateCourse38> a ub:GraduateCourse ;
+    ub:name "GraduateCourse38"^^xsd:string .
+
+<http://www.University33.edu> a ub:University ;
+    ub:name "University33"^^xsd:string .
+
+<http://www.University358.edu> a ub:University ;
+    ub:name "University358"^^xsd:string .
+
+<http://www.University377.edu> a ub:University ;
+    ub:name "University377"^^xsd:string .
+
+<http://www.University392.edu> a ub:University ;
+    ub:name "University392"^^xsd:string .
+
+<http://www.University415.edu> a ub:University ;
+    ub:name "University415"^^xsd:string .
+
+<http://www.University434.edu> a ub:University ;
+    ub:name "University434"^^xsd:string .
+
+<http://www.University509.edu> a ub:University ;
+    ub:name "University509"^^xsd:string .
+
+<http://www.University512.edu> a ub:University ;
+    ub:name "University512"^^xsd:string .
+
+<http://www.University596.edu> a ub:University ;
+    ub:name "University596"^^xsd:string .
+
+<http://www.University605.edu> a ub:University ;
+    ub:name "University605"^^xsd:string .
+
+<http://www.University68.edu> a ub:University ;
+    ub:name "University68"^^xsd:string .
+
+<http://www.University688.edu> a ub:University ;
+    ub:name "University688"^^xsd:string .
+
+<http://www.University708.edu> a ub:University ;
+    ub:name "University708"^^xsd:string .
+
+<http://www.University730.edu> a ub:University ;
+    ub:name "University730"^^xsd:string .
+
+<http://www.University828.edu> a ub:University ;
+    ub:name "University828"^^xsd:string .
+
+<http://www.University927.edu> a ub:University ;
+    ub:name "University927"^^xsd:string .
+
+<http://www.University958.edu> a ub:University ;
+    ub:name "University958"^^xsd:string .
+
+<http://www.University995.edu> a ub:University ;
+    ub:name "University995"^^xsd:string .
+
+<http://www.Department0.University0.edu/GraduateCourse16> a ub:GraduateCourse ;
+    ub:name "GraduateCourse16"^^xsd:string .
+
+<http://www.Department2.University0.edu> a ub:Department ;
+    ub:name "Department2"^^xsd:string ;
+    ub:subOrganizationOf <http://www.University0.edu> .
+
+<http://www.Department9.University0.edu/GraduateCourse1> a ub:GraduateCourse ;
+    ub:name "GraduateCourse1"^^xsd:string .
+
+<http://www.University963.edu> a ub:University ;
+    ub:name "University963"^^xsd:string .
+
+<http://www.Department0.University0.edu> a ub:Department ;
+    ub:name "Department0"^^xsd:string ;
+    ub:subOrganizationOf <http://www.University0.edu> .
+
+<http://www.Department9.University0.edu> a ub:Department ;
+    ub:name "Department9"^^xsd:string ;
+    ub:subOrganizationOf <http://www.University0.edu> .
+
+<http://www.University0.edu> a ub:University ;
+    ub:name "University0"^^xsd:string .
+

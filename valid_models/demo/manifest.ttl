@@ -1,0 +1,20 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .  
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix : <urn:my_constraints/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+: a owl:Ontology .
+:AHU a sh:NodeShape ;  
+     sh:targetClass brick:AHU ;  
+     sh:property [ sh:path brick:hasPart ;  
+         sh:qualifiedValueShape 
+ 	[ sh:node :supply-fan ] ;  
+         sh:qualifiedMinCount 1 ] .  
+:supply-fan a sh:NodeShape ;  
+     sh:class brick:Supply_Fan ;  
+     sh:property [ sh:path brick:hasPoint ;  
+         sh:qualifiedValueShape 
+           [ sh:class brick:Frequency_Command ] ;  
+         sh:qualifiedMinCount 1 ] ;  
+     sh:property [ sh:path brick:hasPoint ;  
+         sh:qualifiedValueShape [ sh:class brick:Fan_Status ] ;  
+         sh:qualifiedMinCount 1 ] .

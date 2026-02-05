@@ -1,0 +1,561 @@
+@prefix ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://example.org/> .
+: a owl:Ontology .
+#:AssistantProfessor a sh:NodeShape;
+#    sh:targetClass ub:AssistantProfessor ;
+#    sh:property [
+#        sh:path ub:doctoralDegreeFrom;
+#        sh:qualifiedValueShape [
+#            sh:node :University
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:emailAddress;
+#        sh:minCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:mastersDegreeFrom;
+#        sh:qualifiedValueShape [
+#            sh:node :University
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:name;
+#        sh:minCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:name;
+#        sh:maxCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:researchInterest;
+#        sh:minCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:teacherOf;
+#        sh:qualifiedValueShape [
+#            sh:node :Course
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:teacherOf;
+#        sh:qualifiedValueShape [
+#            sh:node :Course
+#        ] ;
+#        sh:qualifiedMaxCount 2
+#    ] ;
+#    sh:property [
+#        sh:path ub:teacherOf;
+#        sh:qualifiedValueShape [
+#            sh:node :GraduateCourse
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:teacherOf;
+#        sh:qualifiedValueShape [
+#            sh:node :GraduateCourse
+#        ] ;
+#        sh:qualifiedMaxCount 2
+#    ] ;
+#    sh:property [
+#        sh:path ub:telephone;
+#        sh:minCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:undergraduateDegreeFrom;
+#        sh:qualifiedValueShape [
+#            sh:node :University
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:worksFor;
+#        sh:qualifiedValueShape [
+#            sh:node :Department
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] .
+
+#:AssociateProfessor a sh:NodeShape;
+#    sh:targetClass ub:AssociateProfessor ;
+#    sh:property [
+#        sh:path ub:doctoralDegreeFrom;
+#        sh:qualifiedValueShape [
+#            sh:node :University
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:emailAddress;
+#        sh:minCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:mastersDegreeFrom;
+#        sh:qualifiedValueShape [
+#            sh:node :University
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:name;
+#        sh:minCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:name;
+#        sh:maxCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:researchInterest;
+#        sh:minCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:teacherOf;
+#        sh:qualifiedValueShape [
+#            sh:node :Course
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:teacherOf;
+#        sh:qualifiedValueShape [
+#            sh:node :Course
+#        ] ;
+#        sh:qualifiedMaxCount 2
+#    ] ;
+#    sh:property [
+#        sh:path ub:teacherOf;
+#        sh:qualifiedValueShape [
+#            sh:node :GraduateCourse
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:teacherOf;
+#        sh:qualifiedValueShape [
+#            sh:node :GraduateCourse
+#        ] ;
+#        sh:qualifiedMaxCount 2
+#    ] ;
+#    sh:property [
+#        sh:path ub:telephone;
+#        sh:minCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:undergraduateDegreeFrom;
+#        sh:qualifiedValueShape [
+#            sh:node :University
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:worksFor;
+#        sh:qualifiedValueShape [
+#            sh:node :Department
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] .
+
+:Course a sh:NodeShape;
+    sh:class ub:Course ;
+    sh:property [
+        sh:path ub:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1;
+        sh:maxCount 1;
+    ] .
+
+:Department a sh:NodeShape;
+    sh:class ub:Department ;
+    sh:property [
+        sh:path ub:name;
+        sh:datatype xsd:string ;
+        sh:minCount 1;
+        sh:maxCount 1;
+    ] ;
+    sh:property [
+        sh:path ub:subOrganizationOf;
+        sh:qualifiedValueShape [
+            sh:node :University
+        ] ;
+        sh:qualifiedMinCount 1;
+        sh:qualifiedMaxCount 1;
+    ] .
+
+:FullProfessor a sh:NodeShape;
+    sh:targetClass ub:FullProfessor ;
+    sh:property [
+        sh:path ub:doctoralDegreeFrom;
+        sh:qualifiedValueShape [
+            sh:node :University
+        ] ;
+        sh:qualifiedMinCount 1;
+        sh:qualifiedMaxCount 1
+    ] ;
+    sh:property [
+        sh:path ub:emailAddress;
+        sh:datatype xsd:string ;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:headOf;
+        sh:qualifiedValueShape [
+            sh:node :Department
+        ] ;
+        sh:qualifiedMaxCount 1
+    ] ;
+    sh:property [
+        sh:path ub:mastersDegreeFrom;
+        sh:qualifiedValueShape [
+            sh:node :University
+        ] ;
+        sh:qualifiedMinCount 1
+    ] ;
+    sh:property [
+        sh:path ub:name;
+        sh:datatype xsd:string ;
+        sh:minCount 1;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path ub:researchInterest;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:teacherOf;
+        sh:qualifiedValueShape [
+            sh:node :Course
+        ] ;
+        sh:qualifiedMinCount 1;
+        sh:qualifiedMaxCount 2
+    ] ;
+    sh:property [
+        sh:path ub:teacherOf;
+        sh:qualifiedValueShape [
+            sh:node :GraduateCourse
+        ] ;
+        sh:qualifiedMinCount 1;
+        sh:qualifiedMaxCount 2
+    ] ;
+    sh:property [
+        sh:path ub:telephone;
+        sh:datatype xsd:string;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:undergraduateDegreeFrom;
+        sh:qualifiedValueShape [
+            sh:node :University
+        ] ;
+        sh:qualifiedMinCount 1
+    ] ;
+    sh:property [
+        sh:path ub:worksFor;
+        sh:qualifiedValueShape [
+            sh:node :Department
+        ] ;
+        sh:qualifiedMinCount 1
+    ] .
+
+:GraduateCourse a sh:NodeShape;
+    sh:class ub:GraduateCourse ;
+    sh:property [
+        sh:path ub:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1;
+        sh:maxCount 1;
+    ] .
+
+:GraduateStudent a sh:NodeShape;
+    sh:targetClass ub:GraduateStudent ;
+    sh:property [
+        sh:path ub:advisor ;
+        sh:minCount 1;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path ub:emailAddress ;
+        sh:datatype xsd:string ;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:memberOf;
+        sh:qualifiedValueShape [
+            sh:node :Department
+        ] ;
+        sh:qualifiedMinCount 1
+    ] ;
+    sh:property [
+        sh:path ub:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1;
+        sh:maxCount 1;
+    ] ;
+    sh:property [
+        sh:path ub:takesCourse;
+        sh:qualifiedValueShape [
+            sh:node :GraduateCourse
+        ] ;
+        sh:qualifiedMinCount 1;
+        sh:qualifiedMaxCount 3;
+    ] ;
+    sh:property [
+        sh:path ub:teachingAssistantOf;
+        sh:qualifiedValueShape [
+            sh:node :Course;
+        ] ;
+        sh:qualifiedMaxCount 1;
+    ] ;
+    sh:property [
+        sh:path ub:telephone;
+        sh:datatype xsd:string ;
+        sh:minCount 1;
+    ] ;
+    sh:property [
+        sh:path ub:undergraduateDegreeFrom;
+        sh:qualifiedValueShape [
+            sh:node :University;
+        ] ;
+        sh:qualifiedMinCount 1;
+    ]  .
+
+#:Lecturer a sh:NodeShape;
+#    sh:targetClass ub:Lecturer ;
+#    sh:property [
+#        sh:path ub:doctoralDegreeFrom;
+#        sh:qualifiedValueShape [
+#            sh:node :University
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:emailAddress;
+#        sh:minCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:mastersDegreeFrom;
+#        sh:qualifiedValueShape [
+#            sh:node :University
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:name;
+#        sh:minCount 1;
+#        sh:maxCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:teacherOf;
+#        sh:qualifiedValueShape [
+#            sh:node :Course
+#        ] ;
+#        sh:qualifiedMinCount 1;
+##        sh:qualifiedMaxCount 2
+#    ] ;
+#    sh:property [
+#        sh:path ub:teacherOf;
+#        sh:qualifiedValueShape [
+#            sh:node :GraduateCourse
+#        ] ;
+#        sh:qualifiedMinCount 1;
+##        sh:qualifiedMaxCount 2
+#    ] ;
+#    sh:property [
+#        sh:path ub:telephone;
+#        sh:minCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:undergraduateDegreeFrom;
+#        sh:qualifiedValueShape [
+#            sh:node :University
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:worksFor;
+#        sh:qualifiedValueShape [
+#            sh:node :Department
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] .
+
+#:Publication a sh:NodeShape;
+#    sh:targetClass ub:Publication ;
+#    sh:property [
+#        sh:path ub:name;
+#        sh:minCount 1;
+#        sh:maxCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:publicationAuthor;
+#        sh:minCount 1;
+#        sh:maxCount 7
+#    ] ;
+#    sh:property [
+#        sh:path ub:publicationAuthor;
+#        sh:qualifiedValueShape [
+#            sh:node :UndergraduateStudent
+#        ] ;
+#        sh:qualifiedMaxCount 0
+#    ] .
+
+:ResearchAssistant a sh:NodeShape;
+    sh:targetClass ub:ResearchAssistant ;
+    sh:property [
+        sh:path ub:advisor ;
+        sh:minCount 1;
+        sh:maxCount 1;
+    ] ;
+    sh:property [
+        sh:path ub:emailAddress;
+        sh:datatype xsd:string ;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:memberOf;
+        sh:qualifiedValueShape [
+            sh:node :Department
+        ] ;
+        sh:qualifiedMinCount 1
+    ] ;
+    sh:property [
+        sh:path ub:name;
+        sh:datatype xsd:string ;
+        sh:minCount 1;
+        sh:maxCount 1;
+    ] ;
+    sh:property [
+        sh:path ub:takesCourse;
+        sh:qualifiedValueShape [
+            sh:node :GraduateCourse
+        ] ;
+        sh:qualifiedMinCount 1;
+        sh:qualifiedMaxCount 3;
+    ] ;
+    sh:property [
+        sh:path ub:telephone;
+        sh:datatype xsd:string ;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:undergraduateDegreeFrom;
+        sh:qualifiedValueShape [
+            sh:node :University
+        ] ;
+        sh:qualifiedMinCount 1
+    ] . 
+
+#:ResearchGroup a sh:NodeShape;
+#    sh:targetClass ub:ResearchGroup ;
+#    sh:property [
+#        sh:path ub:subOrganizationOf;
+#        sh:qualifiedValueShape [
+#            sh:node :Department
+#        ] ;
+#        sh:qualifiedMinCount 1;
+##        sh:qualifiedMaxCount 1
+#    ] .
+
+:TeachingAssistant a sh:NodeShape;
+    sh:targetClass ub:TeachingAssistant ;
+    sh:property [
+        sh:path ub:advisor ;
+        sh:minCount 1;
+        sh:maxCount 1;
+    ] ;
+    sh:property [
+        sh:path ub:emailAddress;
+        sh:datatype xsd:string ;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:memberOf;
+        sh:qualifiedValueShape [
+            sh:node :Department
+        ] ;
+        sh:qualifiedMinCount 1
+    ] ;
+    sh:property [
+        sh:path ub:name;
+        sh:datatype xsd:string ;
+        sh:minCount 1;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path ub:takesCourse;
+        sh:qualifiedValueShape [
+            sh:node :GraduateCourse
+        ] ;
+        sh:qualifiedMinCount 1;
+        sh:qualifiedMaxCount 3;
+    ] ;
+    sh:property [
+        sh:path ub:teachingAssistantOf;
+        sh:qualifiedValueShape [
+            sh:node :Course
+        ] ;
+        sh:qualifiedMinCount 1;
+        sh:qualifiedMaxCount 1;
+    ] ;
+    sh:property [
+        sh:path ub:telephone;
+        sh:datatype xsd:string ;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path ub:undergraduateDegreeFrom;
+        sh:qualifiedValueShape [
+            sh:node :University
+        ] ;
+        sh:qualifiedMinCount 1
+    ] .
+
+#:UndergraduateStudent a sh:NodeShape;
+#    sh:targetClass ub:UndergraduateStudent ;
+#    sh:property [
+#        sh:path ub:advisor ;
+#        sh:maxCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:emailAddress ;
+#        sh:minCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:memberOf;
+#        sh:qualifiedValueShape [
+#            sh:node :Department
+#        ] ;
+#        sh:qualifiedMinCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:name ;
+#        sh:minCount 1;
+#        sh:maxCount 1
+#    ] ;
+#    sh:property [
+#        sh:path ub:takesCourse;
+#        sh:qualifiedValueShape [
+#            sh:node :Course
+#        ] ;
+#        sh:qualifiedMinCount 2;
+##        sh:qualifiedMaxCount 4;
+#    ] ;
+#    sh:property [
+#        sh:path ub:telephone;
+#        sh:minCount 1
+#    ] .
+
+:University a sh:NodeShape;
+    sh:class ub:University ;
+    sh:property [
+        sh:path ub:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1;
+        sh:maxCount 1;
+    ] .

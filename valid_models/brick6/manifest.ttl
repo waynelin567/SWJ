@@ -1,0 +1,674 @@
+# contributed by Gabe Fierro
+# reference: https://www.sciencedirect.com/science/article/pii/S0378778806001034?via%3Dihub
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix constraint: <https://nrel.gov/BuildingMOTIF/constraints#> .
+@prefix : <urn:my_site_constraints/> .
+
+: a owl:Ontology ;
+    owl:imports <https://brickschema.org/schema/1.3/Brick> .
+
+
+# heating
+:rule1 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - supply air temperature sensor
+    # - mixed air temperature sensor
+    # - return air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Mixed_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Return_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+:rule2 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - return air temperature sensor
+    # - outside air temperature sensor
+    # - mixed air temperature sensor
+    # - supply air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Return_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Outside_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Mixed_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+:rule3 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - supply air temperature setpoint
+    # - supply air temperature sensor
+    # - heating coil valve command
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Setpoint ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Heating_Coil ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+
+:rule4 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - heating coil valve command
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Heating_Coil ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+
+# cooling with outside air
+:rule5 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - outside air temperature sensor
+    # - supply fan speed command
+    # - supply air temperature setpoint
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Outside_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Supply_Fan ;
+            sh:property [
+                sh:path [ sh:oneOrMorePath brick:hasPoint ] ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Speed_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Setpoint ] ;
+    ] ;
+.
+
+:rule6 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - supply air temperature sensor
+    # - return air temperature sensor
+    # - return fan speed command
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Return_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Return_Fan ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Speed_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+
+:rule7 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - supply air temperature sensor
+    # - supply fan speed command
+    # - mixed air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Supply_Fan ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Speed_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Mixed_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+
+# mechanical cooling with 100% outside air
+:rule8 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - outside air temperature sensor
+    # - supply air temperature setpoint
+    # - supply fan speed command
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Outside_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Setpoint ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Supply_Fan ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Speed_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+
+:rule9 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - outside air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Outside_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+:rule10 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - outside air temperature sensor
+    # - mixed air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Outside_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Mixed_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+
+:rule11 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - supply air temperature sensor
+    # - mixed air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Mixed_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+
+:rule12 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - supply air temperature sensor
+    # - return air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Return_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+:rule13 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - cooling coil valve command
+    # - supply air temperature sensor
+    # - supply air temperature setpoint
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Cooling_Coil ;
+            sh:property [
+                sh:path [ sh:oneOrMorePath brick:hasPoint ] ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Setpoint ] ;
+    ] ;
+.
+
+:rule14 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # cooling coil valve command
+    sh:property [
+        sh:path brick:hasPart;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Cooling_Coil ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedMaxCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+
+# mechanical cooling with minimum outside air
+:rule15 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - outside air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Outside_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+
+:rule16 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - supply air temperature sensor
+    # - mixed air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Mixed_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+
+:rule17 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - supply air temperature sensor
+    # - return air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Return_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+
+:rule18 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - return air temperature sensor
+    # - outside air temperature sensor
+    # - mixed air temperature sensor
+    # - supply air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Return_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Outside_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Mixed_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+
+:rule19 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - cooling coil valve command
+    # - supply air temperature sensor
+    # - supply air temperature setpoint
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Cooling_Coil ;
+            sh:property [ 
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Setpoint ] ;
+    ] ;
+.
+
+
+:rule20 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - cooling coil valve command
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Cooling_Coil ;
+            sh:property [
+                sh:path [ sh:oneOrMorePath brick:hasPoint ] ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ];
+            ];
+        ] ;
+    ] ;
+.
+
+# unknown ccupied modes
+:rule21 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - cooling coil valve command
+    # - heating coil valve command
+    # - supply damper position command
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Cooling_Coil ;
+            sh:property [
+                sh:path [ sh:oneOrMorePath brick:hasPoint ] ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedMaxCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ]
+            ];
+        ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Heating_Coil ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Supply_Damper ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Damper_Position_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+
+
+:rule22 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - heating coil valve command
+    # - cooling coil valve command
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Heating_Coil ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Cooling_Coil ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ] ;
+            ] ;
+            sh:property [
+                sh:path [ sh:oneOrMorePath brick:hasPoint ] ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ]
+            ];
+        ] ;
+    ] ;
+.
+
+
+:rule23 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - heating coil valve command
+    # - supply damper position command
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Heating_Coil ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Supply_Damper ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Damper_Position_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+
+
+:rule24 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - damper position sensor
+    # - cooling coil valve command
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Supply_Damper ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Damper_Position_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Cooling_Coil ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Valve_Command ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+
+# all occupied modes
+
+:rule25 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - supply air temperature sensor
+    # - supply air temperature setpoint
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Setpoint ] ;
+    ] ;
+.
+
+
+:rule26 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - mixed air temperature sensor
+    # - outside air temperature sensor
+    # - return air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Mixed_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Outside_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Return_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+:rule27 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - mixed air temperature sensor
+    # - outside air temperature sensor
+    # - return air temperature sensor
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Mixed_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Outside_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Return_Air_Temperature_Sensor ] ;
+    ] ;
+.
+
+
+:rule28 a sh:NodeShape ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    # - hvac mode command
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:HVAC_Mode_Command ] ;
+    ] ;
+.

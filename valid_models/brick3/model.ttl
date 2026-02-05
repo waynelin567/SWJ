@@ -1,0 +1,30 @@
+@prefix bldg: <urn:ex/> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:bldg/> a owl:Ontology .
+
+<urn:bldg/fptu> a brick:Terminal_Unit ;
+    brick:isFedBy <urn:bldg/ahu1> ;
+    brick:hasPoint <urn:bldg/heating_cmd>, <urn:bldg/zone1_temp_sensor>, 
+                   <urn:bldg/supply_air_flow>, <urn:bldg/supply_air_temp>;
+    brick:hasPart <urn:bldg/power_fan>, <urn:bldg/damper> .
+
+
+<urn:bldg/damper> a brick:Damper ;
+    brick:hasPoint <urn:bldg/damper_position_cmd> .    
+<urn:bldg/power_fan> a brick:Fan; 
+    brick:hasPoint <urn:bldg/freq_cmd>, <urn:bldg/ss_cmd>, <urn:bldg/fan_stat> .
+
+<urn:bldg/freq_cmd> a brick:Frequency_Command .
+<urn:bldg/ss_cmd> a brick:Start_Stop_Command .
+<urn:bldg/fan_stat>  a brick:Fan_Status.
+
+<urn:bldg/heating_cmd> a brick:Heating_Command .
+
+<urn:bldg/zone1_temp_sensor> a brick:Zone_Air_Temperature_Sensor .
+
+<urn:bldg/supply_air_flow> a brick:Supply_Air_Flow_Sensor .
+<urn:bldg/supply_air_temp> a brick:Supply_Air_Temperature_Sensor .
+<urn:bldg/damper_position_cmd> a brick:Damper_Position_Command .  

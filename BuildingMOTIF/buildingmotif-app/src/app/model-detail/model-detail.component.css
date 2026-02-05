@@ -1,0 +1,36 @@
+.container {
+    height: 100%;
+}
+
+.main-content-and-button {
+    height: 100%;
+    display: flex;
+}
+
+.main-content {
+    padding: 1rem 3rem;
+    flex-grow: 1;
+}
+
+.title {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+.side-nav-button {
+    display: flex;
+}
+
+.sidenav-content {
+    width: 50%;
+}
+
+mat-tab-body-content {
+    overflow: hidden;
+}

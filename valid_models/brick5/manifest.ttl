@@ -1,0 +1,113 @@
+# contributed by Gabe Fierro
+# reference:  https://github.com/minyounghwang/FSBrick?tab=readme-ov-file
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix constraint: <https://nrel.gov/BuildingMOTIF/constraints#> .
+@prefix : <urn:my_site_constraints/> .
+
+: a owl:Ontology ;
+    owl:imports <https://brickschema.org/schema/1.3/Brick> .
+:rule1 a sh:NodeShape ;
+    rdfs:label "OA Airflow - OA Airflow Min Setpoint| < 200 cfm (TRUE for no alarm)" ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Outside_Damper ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Air_Flow_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Outside_Air_Flow_Setpoint ] ;
+    ] ;
+.
+
+
+:rule2 a sh:NodeShape ;
+    rdfs:label "OA damper position feedback -OA Damper Min Position Setpoint > 0 (TRUE for no alarm)" ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ 
+            sh:class brick:Outside_Damper  ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Damper_Position_Sensor ] ;
+            ] ;
+            sh:property [
+                sh:path brick:hasPoint ;
+                sh:qualifiedMinCount 1 ;
+                sh:qualifiedValueShape [ sh:class brick:Damper_Position_Setpoint ] ;
+            ] ;
+        ] ;
+    ] ;
+.
+
+:rule3 a sh:NodeShape ;
+    rdfs:label "PHT Supply Temperature - PHT Supply Temperature Setpoint| < 2.5 (TRUE for no alarm) (PHT = preheat valve)" ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Preheat_Valve ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Setpoint ] ;
+    ] ;
+.
+
+:rule4 a sh:NodeShape ;
+    rdfs:label "SA Static Pressure Actual - SA Static Pressure Setpoint| < 0.5 (TRUE for no alarm)" ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Fan ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Static_Pressure_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Static_Pressure_Setpoint ] ;
+    ] ;
+.
+
+:rule5 a sh:NodeShape ;
+    rdfs:label "SA Temperature Actual - SA Temperature Setpoint| < 2.5 (TRUE for no alarm)" ;
+    sh:targetClass brick:Air_Handling_Unit ;
+    sh:property [
+        sh:path brick:hasPart ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Fan ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Sensor ] ;
+    ] ;
+    sh:property [
+        sh:path brick:hasPoint ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [ sh:class brick:Supply_Air_Temperature_Setpoint ] ;
+    ] ;
+.

@@ -1,0 +1,52 @@
+@prefix bldg: <urn:ex/> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+
+<urn:bldg/> a owl:Ontology .
+
+<urn:bldg/ahu1> a brick:Air_Handling_Unit; 
+    brick:hasPoint <urn:bldg/outside_co2_sensor>;
+    brick:feeds <urn:bldg/zone1> .  
+
+<urn:bldg/zone1> a brick:HVAC_Zone ; 
+    brick:volume [
+        brick:value "500"^^xsd:decimal ;
+        brick:hasUnit qudt:M3 ;
+    ];
+    brick:hasPoint <urn:bldg/zone1_co2_sensor>.
+
+<urn:bldg/outside_co2_sensor> a brick:Outside_Air_CO2_Sensor;
+    brick:hasUnit qudt:PPM .
+
+<urn:bldg/zone1_co2_sensor> a brick:CO2_Sensor ;
+    brick:hasUnit qudt:PPM .
+
+<urn:bldg/ahu2> a brick:Air_Handling_Unit; 
+    brick:hasPoint <urn:bldg/outside_co2_sensor>;
+    brick:feeds <urn:bldg/zone2> .  
+
+<urn:bldg/zone2> a brick:HVAC_Zone ; 
+    brick:volume [
+        brick:value "553"^^xsd:decimal ;
+        brick:hasUnit qudt:M3 ;
+    ];
+    brick:hasPoint <urn:bldg/zone2_co2_sensor>.
+    
+<urn:bldg/zone2_co2_sensor> a brick:CO2_Sensor ;
+    brick:hasUnit qudt:PPM .
+
+<urn:bldg/ahu3> a brick:Air_Handling_Unit; 
+    brick:hasPoint <urn:bldg/outside_co2_sensor>;
+    brick:feeds <urn:bldg/zone3> .  
+
+<urn:bldg/zone3> a brick:HVAC_Zone ; 
+    brick:volume [
+        brick:value "253"^^xsd:decimal ;
+        brick:hasUnit qudt:M3 ;
+    ];
+    brick:hasPoint <urn:bldg/zone3_co2_sensor> .
+    
+<urn:bldg/zone3_co2_sensor> a brick:CO2_Sensor ;
+    brick:hasUnit qudt:PPM .
